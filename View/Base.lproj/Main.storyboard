@@ -406,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ffm-3l-LDO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1632.8" y="1556.6716641679161"/>
+            <point key="canvasLocation" x="-1631" y="1639"/>
         </scene>
         <!--Detail-->
         <scene sceneID="uc8-D6-NKa">
@@ -495,30 +495,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zq-H3-ukT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="475"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NXD-Gh-z0E">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="259"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BgE-td-kRk">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fhc-Vv-36h">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeQ-1n-wEV">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kRc-Mj-mbg">
+                                                <rect key="frame" x="60" y="63" width="200" height="110"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lJQ-b7-Ucp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </collectionViewCellContentView>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agust 2022" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ml-OD-uZ3">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NXD-Gh-z0E" customClass="JTACMonthView" customModule="JTAppleCalendar">
+                                                <rect key="frame" x="0.0" y="25.5" width="320" height="211.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BgE-td-kRk">
+                                                    <size key="itemSize" width="100" height="100"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dateCell" id="Fhc-Vv-36h" customClass="DateCell" customModule="Agenda" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="100"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lJQ-b7-Ucp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OO-Ed-N6T">
+                                                                    <rect key="frame" x="0.0" y="40" width="41.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="4OO-Ed-N6T" firstAttribute="centerY" secondItem="lJQ-b7-Ucp" secondAttribute="centerY" id="N6G-b8-Lid"/>
+                                                                <constraint firstAttribute="trailing" secondItem="4OO-Ed-N6T" secondAttribute="trailing" id="PsT-FL-39H"/>
+                                                                <constraint firstItem="4OO-Ed-N6T" firstAttribute="leading" secondItem="lJQ-b7-Ucp" secondAttribute="leading" id="jM8-j7-JYH"/>
+                                                            </constraints>
+                                                        </collectionViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="dateLabel" destination="4OO-Ed-N6T" id="mAE-cz-pVj"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="ibCalendarDataSource" destination="O9N-wN-YQo" id="Q5R-6O-fJU"/>
+                                                    <outlet property="ibCalendarDelegate" destination="O9N-wN-YQo" id="48D-cs-D22"/>
+                                                </connections>
+                                            </collectionView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="NXD-Gh-z0E" firstAttribute="leading" secondItem="zeQ-1n-wEV" secondAttribute="leading" id="F5U-Rm-yfN"/>
+                                            <constraint firstAttribute="trailing" secondItem="NXD-Gh-z0E" secondAttribute="trailing" id="Knw-pW-qPe"/>
+                                            <constraint firstAttribute="bottom" secondItem="NXD-Gh-z0E" secondAttribute="bottom" id="MWF-CO-uXh"/>
+                                            <constraint firstItem="NXD-Gh-z0E" firstAttribute="top" secondItem="7ml-OD-uZ3" secondAttribute="bottom" constant="5" id="TwP-b2-k3g"/>
+                                            <constraint firstItem="7ml-OD-uZ3" firstAttribute="leading" secondItem="zeQ-1n-wEV" secondAttribute="leading" id="Xbp-OU-DGq"/>
+                                            <constraint firstItem="7ml-OD-uZ3" firstAttribute="top" secondItem="zeQ-1n-wEV" secondAttribute="top" id="heC-RE-Pwc"/>
+                                            <constraint firstAttribute="trailing" secondItem="7ml-OD-uZ3" secondAttribute="trailing" id="vgA-bg-ZxZ"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TIs-Iv-Vtl">
-                                        <rect key="frame" x="0.0" y="260" width="320" height="259"/>
+                                        <rect key="frame" x="0.0" y="238" width="320" height="237"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" id="u1e-Uh-fQB">
@@ -540,14 +585,18 @@
                             <constraint firstItem="NA8-Uf-xta" firstAttribute="bottom" secondItem="7zq-H3-ukT" secondAttribute="bottom" id="NrR-kY-Ag5"/>
                             <constraint firstAttribute="trailing" secondItem="7zq-H3-ukT" secondAttribute="trailing" id="Z1X-M7-ONM"/>
                             <constraint firstItem="7zq-H3-ukT" firstAttribute="leading" secondItem="HSW-NV-GZl" secondAttribute="leading" id="hPn-2g-vQd"/>
-                            <constraint firstItem="7zq-H3-ukT" firstAttribute="top" secondItem="HSW-NV-GZl" secondAttribute="top" id="wsz-XZ-ayY"/>
+                            <constraint firstItem="7zq-H3-ukT" firstAttribute="top" secondItem="NA8-Uf-xta" secondAttribute="top" id="wsz-XZ-ayY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="utM-cV-Anq"/>
+                    <connections>
+                        <outlet property="calendar" destination="NXD-Gh-z0E" id="BEn-xj-Uuu"/>
+                        <outlet property="monthLabel" destination="7ml-OD-uZ3" id="3DJ-b7-KlC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAD-YE-3fH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-936" y="1557"/>
+            <point key="canvasLocation" x="-936" y="1640"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yk5-bI-EM9">
@@ -563,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0X-zu-7Xc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="1558"/>
+            <point key="canvasLocation" x="-261" y="1638"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="gpd-VC-yRH">
@@ -579,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vB-Ji-utJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430" y="1558"/>
+            <point key="canvasLocation" x="429" y="1637"/>
         </scene>
         <!--Settings-->
         <scene sceneID="HxN-j6-XXa">
@@ -595,7 +644,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTv-wR-SuH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1137" y="1558"/>
+            <point key="canvasLocation" x="1136" y="1636"/>
         </scene>
     </scenes>
     <resources>
