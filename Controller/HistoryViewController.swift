@@ -16,6 +16,16 @@ class HistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        calendar.ibCalendarDelegate = self
+        calendar.ibCalendarDataSource = self
+        
+        calendar.allowsMultipleSelection = false
+        
+        let today = Date()
+        
+        calendar.scrollToDate(today, animateScroll: false)
+        
         calendar.visibleDates { visibleDates in
             self.setupMonthLabel(date: visibleDates.monthDates.first!.date)
         }
@@ -25,7 +35,8 @@ class HistoryViewController: UIViewController {
     
     func setupMonthLabel(date: Date) {
         let df = DateFormatter()
-        df.dateFormat = "yyyy MMM"
+        df.locale = Locale(identifier: "en-US")
+        df.dateFormat = "MMM yyyy"
         monthLabel.text = df.string(from: date)
     }
     
@@ -35,12 +46,19 @@ class HistoryViewController: UIViewController {
         } else {
             cell.dateLabel.textColor = .gray
         }
+        
     }
     
     func handleConfiguration(cell: JTACDayCell?, cellState: CellState) {
         guard let cell = cell as? DateCell else { return }
         handleCellColor(cell: cell, cellState: cellState)
-        //handleCellSelection(cell: cell, cellState: cellState)
+    }
+    
+    func handleCellSelection(cell: DateCell, cellState: CellState) {
+        cell.selectedView.layer.cornerRadius = 5
+        cell.selectedView.backgroundColor = UIColor(red: 0.49, green: 0.85, blue: 0.51, alpha: 1.00)
+        
+        cell.selectedView.clipsToBounds = true
     }
     
 }
@@ -54,10 +72,15 @@ extension HistoryViewController : JTACMonthViewDataSource {
         dateFormatter.dateFormat = "yyyy MM dd";
         
         let startDate = dateFormatter.date(from: "2022 01 01")!
-        let endDate = Date()
         
-        return ConfigurationParameters(startDate: startDate, endDate: endDate,
-                                       generateInDates: .off, generateOutDates: .off, firstDayOfWeek: .monday)
+        let currentDate = Date()
+        
+        var dateComponent = DateComponents()
+        dateComponent.month = 6
+        
+        let endDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)!
+        
+        return ConfigurationParameters(startDate: startDate, endDate: endDate, firstDayOfWeek: .monday)
     }
     
 }
@@ -86,6 +109,10 @@ extension HistoryViewController : JTACMonthViewDelegate {
         handleConfiguration(cell: cell, cellState: cellState)
         
         return cell
+    }
+    
+    func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
+        handleCellSelection(cell: cell as! DateCell, cellState: cellState)
     }
     
     
