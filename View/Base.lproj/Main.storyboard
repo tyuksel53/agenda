@@ -8,6 +8,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -407,21 +408,6 @@
             </objects>
             <point key="canvasLocation" x="-1632.8" y="1556.6716641679161"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="z58-pP-CEG">
-            <objects>
-                <viewController id="qwg-K9-goV" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="drG-QJ-CdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="dDs-Rn-25r"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ifH-Ia-nmc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-935" y="1558"/>
-        </scene>
         <!--Detail-->
         <scene sceneID="uc8-D6-NKa">
             <objects>
@@ -503,18 +489,65 @@
         <!--History-->
         <scene sceneID="b8E-ur-SK4">
             <objects>
-                <viewController id="O9N-wN-YQo" sceneMemberID="viewController">
+                <viewController id="O9N-wN-YQo" customClass="HistoryViewController" customModule="Agenda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HSW-NV-GZl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zq-H3-ukT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NXD-Gh-z0E">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="259"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BgE-td-kRk">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fhc-Vv-36h">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lJQ-b7-Ucp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TIs-Iv-Vtl">
+                                        <rect key="frame" x="0.0" y="260" width="320" height="259"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" id="u1e-Uh-fQB">
+                                                <rect key="frame" x="0.0" y="44.5" width="320" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u1e-Uh-fQB" id="yNq-5C-3XJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="NA8-Uf-xta"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NA8-Uf-xta" firstAttribute="bottom" secondItem="7zq-H3-ukT" secondAttribute="bottom" id="NrR-kY-Ag5"/>
+                            <constraint firstAttribute="trailing" secondItem="7zq-H3-ukT" secondAttribute="trailing" id="Z1X-M7-ONM"/>
+                            <constraint firstItem="7zq-H3-ukT" firstAttribute="leading" secondItem="HSW-NV-GZl" secondAttribute="leading" id="hPn-2g-vQd"/>
+                            <constraint firstItem="7zq-H3-ukT" firstAttribute="top" secondItem="HSW-NV-GZl" secondAttribute="top" id="wsz-XZ-ayY"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="utM-cV-Anq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAD-YE-3fH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-935" y="1558"/>
+            <point key="canvasLocation" x="-936" y="1557"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yk5-bI-EM9">
