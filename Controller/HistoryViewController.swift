@@ -14,6 +14,11 @@ class HistoryViewController: UIViewController {
     
     @IBOutlet weak var monthLabel: UILabel!
     
+    @IBOutlet weak var taskListView: UITableView!
+    
+    var taskList = [Task(taskName: "Practice", workLog: 2), Task(taskName: "Learn English" , workLog: 3),
+    Task(taskName: "Play Piano", workLog: 1), Task(taskName: "Read Book", workLog: 3), Task(taskName: "Watch Movie", workLog: 2), Task(taskName: "Take a Walk", workLog: 5)]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +26,13 @@ class HistoryViewController: UIViewController {
         calendar.ibCalendarDataSource = self
         
         calendar.allowsMultipleSelection = false
+        
+        taskListView.delegate = self
+        
+        taskListView.dataSource = self
+        
+        taskListView.register(UINib(nibName: "TaskHistoryTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "historyCell")
         
         let today = Date()
         
@@ -63,31 +75,28 @@ class HistoryViewController: UIViewController {
     
 }
 
-//MARK JTACMonthViewDataSource
+//MARK UITableViewDelegate, UITableViewDataSource
 
-extension HistoryViewController : JTACMonthViewDataSource {
-    func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM dd";
-        
-        let startDate = dateFormatter.date(from: "2022 01 01")!
-        
-        let currentDate = Date()
-        
-        var dateComponent = DateComponents()
-        dateComponent.month = 6
-        
-        let endDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)!
-        
-        return ConfigurationParameters(startDate: startDate, endDate: endDate, firstDayOfWeek: .monday)
+extension HistoryViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return taskList.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! TaskHistoryTableViewCell
+        cell.taskName.text = taskList[indexPath.row].taskName
+        cell.taskDesc.text = String(format: "%.2f hours", taskList[indexPath.row].workLog)
+        cell.accessoryType = .checkmark
+        return cell
+    }
+    
     
 }
 
-//MARK JTACMonthViewDelegate
+//MARK JTACMonthViewDelegate - JTACMonthViewDataSource
 
-extension HistoryViewController : JTACMonthViewDelegate {
+extension HistoryViewController : JTACMonthViewDelegate, JTACMonthViewDataSource {
     
     func calendar(_ calendar: JTACMonthView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setupMonthLabel(date: visibleDates.monthDates.first!.date)
@@ -115,5 +124,21 @@ extension HistoryViewController : JTACMonthViewDelegate {
         handleCellSelection(cell: cell as! DateCell, cellState: cellState)
     }
     
+    func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM dd";
+        
+        let startDate = dateFormatter.date(from: "2022 01 01")!
+        
+        let currentDate = Date()
+        
+        var dateComponent = DateComponents()
+        dateComponent.month = 6
+        
+        let endDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)!
+        
+        return ConfigurationParameters(startDate: startDate, endDate: endDate, firstDayOfWeek: .monday)
+    }
     
 }
