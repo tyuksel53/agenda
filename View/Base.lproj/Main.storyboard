@@ -428,11 +428,11 @@
             </objects>
             <point key="canvasLocation" x="-934" y="851"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Add-->
         <scene sceneID="zt2-uk-ldX">
             <objects>
                 <navigationController id="icg-ra-UR8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="plus.circle" catalog="system" id="DX0-0k-yez">
+                    <tabBarItem key="tabBarItem" title="Add" selectedImage="plus.circle" catalog="system" id="DX0-0k-yez">
                         <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
                         <color key="badgeColor" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
@@ -441,12 +441,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="AJW-3w-gSG" kind="presentation" identifier="addTask" id="j6r-bX-OXz"/>
+                        <segue destination="AJW-3w-gSG" kind="relationship" relationship="rootViewController" id="qN6-D6-9Ad"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qy9-UV-u9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="851"/>
+            <point key="canvasLocation" x="-263" y="860"/>
         </scene>
         <!--Taks-->
         <scene sceneID="gj1-Lq-6ZK">
@@ -657,15 +657,61 @@
             </objects>
             <point key="canvasLocation" x="-937.5" y="1639.4366197183099"/>
         </scene>
-        <!--View Controller-->
+        <!--Insert Task View Controller-->
         <scene sceneID="Yk5-bI-EM9">
             <objects>
-                <viewController id="AJW-3w-gSG" sceneMemberID="viewController">
+                <viewController id="AJW-3w-gSG" customClass="InsertTaskViewController" customModule="Agenda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d2d-Ua-5f5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="9PW-Oy-T0X">
+                                <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1GT-X7-8q3">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Iom-KL-phh">
+                                        <rect key="frame" x="0.0" y="37" width="320" height="354"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="tes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gx8-hP-n4W">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="354"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHu-ml-wZA">
+                                                <rect key="frame" x="160" y="0.0" width="160" height="354"/>
+                                            </pickerView>
+                                        </subviews>
+                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RWN-I7-ZJW">
+                                        <rect key="frame" x="0.0" y="393" width="320" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="iLz-oS-Qr9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="estimated time(hours) - optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2S-Rt-pQr">
+                                        <rect key="frame" x="0.0" y="475" width="320" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Flb-XW-A3X"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9PW-Oy-T0X" firstAttribute="bottom" secondItem="Flb-XW-A3X" secondAttribute="bottom" id="19s-Zy-zbt"/>
+                            <constraint firstItem="9PW-Oy-T0X" firstAttribute="top" secondItem="Flb-XW-A3X" secondAttribute="top" id="4qI-LA-OL5"/>
+                            <constraint firstAttribute="trailing" secondItem="9PW-Oy-T0X" secondAttribute="trailing" id="6mA-RV-mYI"/>
+                            <constraint firstItem="9PW-Oy-T0X" firstAttribute="leading" secondItem="d2d-Ua-5f5" secondAttribute="leading" id="eGN-A1-xbw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rNv-RI-2VU"/>
                 </viewController>
@@ -709,7 +755,7 @@
     <resources>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
-        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="house" catalog="system" width="32" height="32"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
@@ -722,6 +768,9 @@
         <namedColor name="SummaryBgColor">
             <color red="0.99599999189376831" green="0.87800002098083496" blue="0.79199999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
